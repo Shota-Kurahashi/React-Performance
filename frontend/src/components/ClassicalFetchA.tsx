@@ -1,10 +1,11 @@
 import React, { FC } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
 import { useClassicalFetch } from "../hooks/useClassicalFetch";
 
 export const ClassicalFetchA: FC = () => {
   const { isError, isLoading, tasks } = useClassicalFetch();
+  const navigate = useNavigate();
 
   console.log("rendered ClassicalFetchA");
   if (isLoading) return <div>Loading...</div>;
@@ -17,7 +18,7 @@ export const ClassicalFetchA: FC = () => {
         <p key={task.id}>{task.title}</p>
       ))}
       <ChevronDoubleRightIcon
-        onClick={() => Navigate({ to: "/fetch-b" })}
+        onClick={() => navigate("/fetch-b")}
         className="mt-2 h-5 w-5 cursor-pointer text-blue-500"
       />
       <p className="text-sm">fetch B</p>
