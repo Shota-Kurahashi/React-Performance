@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ClassicalFetchA } from "./components/ClassicalFetchA";
@@ -10,6 +10,8 @@ import { StateProvider } from "./context/StateProvider";
 import { ReactQueryB } from "./components/ReactQueryB";
 import { MainContext } from "./components/MainContext";
 import { MainZustand } from "./components/MainZustand";
+import { Spinner } from "./components/Spinner";
+import { SuspenseDemo } from "./components/SuspenseDemo";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,7 +31,9 @@ const App = () => (
           <Routes>
             <Route path="/fetch-a" element={<ClassicalFetchA />} />
             <Route path="/fetch-b" element={<ClassicalFetchB />} />
-            <Route path="/" element={<ReactQueryA />} />
+            {/* <Suspense fallback={<Spinner />}> */}
+            <Route path="/" element={<SuspenseDemo />} />
+            {/* </Suspense> */}
             <Route path="/query-b" element={<ReactQueryB />} />
             <Route path="/main-context" element={<MainContext />} />
             <Route path="/main-zustand" element={<MainZustand />} />
