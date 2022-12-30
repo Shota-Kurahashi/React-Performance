@@ -30,9 +30,9 @@ export const Layout: FC<Props> = ({ children }) => (
             </Link>
             <Link
               className="rounded px-3 py-2 text-sm text-gray-300 hover:bg-gray-700"
-              to="/main-rtkit"
+              to="/main-zustand"
             >
-              RTKit
+              zustand
             </Link>
           </div>
         </div>
